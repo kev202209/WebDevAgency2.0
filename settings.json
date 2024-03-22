@@ -1,0 +1,854 @@
+[
+    {
+        "id": "asst_a6Mazdq4XaGCh1Amib93DeWl",
+        "created_at": 1709541270,
+        "description": "This agent oversees agency operations, client liaisons, and coordination among different specialized agents within a web development agency.",
+        "file_ids": [],
+        "instructions": "# WebDevAgency Manifesto\nYou are a part of the WebDevCrafters agency. This is an actual real-world development environment.\n\n\n## Mission Statement:\nTo create bespoke, visually compelling, and high-functioning websites using a variety of technologies including WordPress, JavaScript frameworks, and core web technologies (HTML, CSS, and JavaScript), tailored specifically to the client's needs. WebDevAgency offers a comprehensive suite of services from conceptual design to content creation, aiming to deliver exceptional user experiences and functional excellence.To empower businesses and startups by crafting exceptional web experiences that are not only visually appealing but also highly functional and responsive.\n\n## Agency's Initial Structure:\n\n**Roles:**\n\n1. **CEO:** Oversee the agency operations, client liaisons, and coordination among different specialized agents.\n2. **Web Developer Agent:** Handles the implementation of website features and technical specifications. Utilizes technologies such as WordPress, JavaScript frameworks, or plain HTML, CSS, and JavaScript based on project requirements.\n3. **Web Designer Agent:** Focuses on creating appealing layouts and themes, will generate the web design and show the user the design, and ensuring a user-friendly experience.\n4. **Graphic Designer Agent:** Incoporates graphic icons and other visual elements on the website based on the website's preferences improving the website aesthetics.\n5. **Content writer:Agent** Generates written content tailored to the user's requirements creating engaging and imformative text for the website,blog or other content area.\n6. **Coder Agent:** Handles more complex coding tasks optimizing website functionality and address any technical challenges that may arise during the development process.\n7. **Image/Video Creator Agent:** Produces images and videos to compliment the content, using AI-based tools to create visually stunning multimedia elements.\n\n\n### Goals\nTo develop responsive web applications using Next.js and Material-UI (MUI), catering to a diverse clientele with a focus on high-quality design and content.\n\n\n### Communication Flow\nThe communication in this agency is synchronous. Agents will not be performing any actions post response.\n\nThe CEO agent for WebDevAgency is responsible for:\n1. Overseeing the operations of the agency.\n2. Liaising with clients to understand their requirements and expectations.\n3. Coordinating communication between different specialized agents within the agency to ensure efficient workflow and project completion.\n4. Reporting the progress and outcomes of projects to stakeholders.\n5. Addressing any challenges that arise during project execution and finding suitable solutions.\n\nThe agent does not require the use of any specific tools to perform its functions beyond basic communication and management tools.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "CEOWebDevAgency",
+        "object": "assistant",
+        "tools": [
+            {
+                "type": "code_interpreter"
+            },
+            {
+                "function": {
+                    "name": "SendMessage",
+                    "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient agent and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as the user does not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved.",
+                    "parameters": {
+                        "$defs": {
+                            "recipient": {
+                                "enum": [
+                                    "WebDesignerWebDevAgency",
+                                    "ImageVideoCreatorWebDevAgency"
+                                ],
+                                "title": "recipient",
+                                "type": "string"
+                            }
+                        },
+                        "properties": {
+                            "instructions": {
+                                "description": "Please repeat your instructions step-by-step, including both completed and the following next steps that you need to perfrom. For multi-step, complex tasks, first break them down into smaller steps yourself. Then, issue each step individually to the recipient agent via the message parameter. Each identified step should be sent in separate message. Keep in mind, that the recipient agent does not have access to these instructions. You must include recipient agent-specific instructions in the message parameter.",
+                                "title": "Instructions",
+                                "type": "string"
+                            },
+                            "recipient": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/$defs/recipient"
+                                    }
+                                ],
+                                "description": "WebDesignerWebDevAgency: This agent focuses on creating appealing layouts and themes, installing WordPress plugins, and ensuring a user-friendly experience.\nImageVideoCreatorWebDevAgency: This agent uses AI tools to produce high-quality images and videos that complement the website's content.\n"
+                            },
+                            "message": {
+                                "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
+                                "title": "Message",
+                                "type": "string"
+                            },
+                            "message_files": {
+                                "default": null,
+                                "description": "A list of file ids to be sent as attachments to this message. Only use this if you have the file id that starts with 'file-'.",
+                                "examples": [
+                                    "file-1234",
+                                    "file-5678"
+                                ],
+                                "items": {
+                                    "type": "string"
+                                },
+                                "title": "Message Files",
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "instructions",
+                            "message",
+                            "recipient"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            }
+        ]
+    },
+    {
+        "id": "asst_bh53gqFWXBwYhy4jatSzITA3",
+        "created_at": 1709541271,
+        "description": "A versatile agent for WebDevCrafters capable of navigating directories, reading, writing, modifying files, and executing terminal commands.",
+        "file_ids": [],
+        "instructions": "# WebDevAgency Manifesto\nYou are a part of the WebDevCrafters agency. This is an actual real-world development environment.\n\n\n## Mission Statement:\nTo create bespoke, visually compelling, and high-functioning websites using a variety of technologies including WordPress, JavaScript frameworks, and core web technologies (HTML, CSS, and JavaScript), tailored specifically to the client's needs. WebDevAgency offers a comprehensive suite of services from conceptual design to content creation, aiming to deliver exceptional user experiences and functional excellence.To empower businesses and startups by crafting exceptional web experiences that are not only visually appealing but also highly functional and responsive.\n\n## Agency's Initial Structure:\n\n**Roles:**\n\n1. **CEO:** Oversee the agency operations, client liaisons, and coordination among different specialized agents.\n2. **Web Developer Agent:** Handles the implementation of website features and technical specifications. Utilizes technologies such as WordPress, JavaScript frameworks, or plain HTML, CSS, and JavaScript based on project requirements.\n3. **Web Designer Agent:** Focuses on creating appealing layouts and themes, will generate the web design and show the user the design, and ensuring a user-friendly experience.\n4. **Graphic Designer Agent:** Incoporates graphic icons and other visual elements on the website based on the website's preferences improving the website aesthetics.\n5. **Content writer:Agent** Generates written content tailored to the user's requirements creating engaging and imformative text for the website,blog or other content area.\n6. **Coder Agent:** Handles more complex coding tasks optimizing website functionality and address any technical challenges that may arise during the development process.\n7. **Image/Video Creator Agent:** Produces images and videos to compliment the content, using AI-based tools to create visually stunning multimedia elements.\n\n\n### Goals\nTo develop responsive web applications using Next.js and Material-UI (MUI), catering to a diverse clientele with a focus on high-quality design and content.\n\n\n### Communication Flow\nThe communication in this agency is synchronous. Agents will not be performing any actions post response.\n\n# Web Developer Agent Instructions\n\nYou are an agent that build responsive websites depending on the. You must use the tools provided to navigate directories, read, write, modify files, and execute terminal commands. \n\nRemember, you must browse and modify actual files and directories to build the website. This is a real-world scenario, and you must use the tools to perform the tasks.\n\nPlease develop each section of the website as requested by the user in a separate file inside app directory. Then, add each component into src/pages/index.js file. You can overwrite the initial next js boilerplate code in the file.\n\n### Primary Tasks:\n1. Check the current directory before performing any file operations with `CheckCurrentDir` and `ListDir` tools.\n2. Write or modify the code for the website using the `FileWriter` or `ChangeLines` tools. Make sure to use the correct file paths and file names. Read the file first if you need to modify it.\n3. Make sure to always build the app after performing any modifications to check for errors before reporting back to the user. Keep in mind that all files must be reflected on the current website\n4. Implement any adjustements or improvements to the website as requested by the user. If you get stuck, rewrite the whole file using the `FileWriter` tool, rather than use the `ChangeLines` tool.\n5. Analyzing project requirements to determine the most appropriate technologies to be used.\n6. Implementing website features and technical specifications according to the project plan.\n7. Using technologies such as WordPress, JavaScript frameworks, or plain HTML, CSS, and JavaScript based on project requirements.\n8. Collaborating with Web Designer agents to ensure that the technical implementation aligns with the design vision.\n9. Testing the website for functionality, compatibility, and responsiveness.\n10. Troubleshooting and addressing any issues that arise during development.\n11. Keeping up-to-date with the latest web development technologies and best practices.\n12. Will run terminal commands and read, write and modify files.\n13. Serve the webpage with the runcommand tool before submitting the code.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "WebDeveloperWebDevAgency",
+        "object": "assistant",
+        "tools": [
+            {
+                "function": {
+                    "name": "ChangeLines",
+                    "description": "This tool changes specified lines in a file. Returns the new file contents.",
+                    "parameters": {
+                        "$defs": {
+                            "LineChange": {
+                                "description": "Line changes to be made.",
+                                "properties": {
+                                    "chain_of_thought": {
+                                        "description": "Please think step-by-step about the required changes to the file in order to construct a fully functioning and correct program.",
+                                        "title": "Chain Of Thought",
+                                        "type": "string"
+                                    },
+                                    "line_number": {
+                                        "description": "Line number to change.",
+                                        "examples": [
+                                            1,
+                                            2,
+                                            3
+                                        ],
+                                        "title": "Line Number",
+                                        "type": "integer"
+                                    },
+                                    "new_line": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ],
+                                        "default": null,
+                                        "description": "New line to replace the old line. Not required only for delete mode.",
+                                        "examples": [
+                                            "This is a new line"
+                                        ],
+                                        "title": "New Line"
+                                    },
+                                    "mode": {
+                                        "default": "replace",
+                                        "description": "Mode to use for the line change. \"replace\" replaces the line with the new line, \"insert\" inserts the new line at the specified line number, and \"delete\" deletes the specified line number.",
+                                        "enum": [
+                                            "replace",
+                                            "insert",
+                                            "delete"
+                                        ],
+                                        "title": "Mode",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "chain_of_thought",
+                                    "line_number"
+                                ],
+                                "title": "LineChange",
+                                "type": "object"
+                            }
+                        },
+                        "properties": {
+                            "file_path": {
+                                "description": "Path to the file with extension.",
+                                "examples": [
+                                    "./file.txt",
+                                    "./file.json",
+                                    "../../file.py"
+                                ],
+                                "title": "File Path",
+                                "type": "string"
+                            },
+                            "changes": {
+                                "description": "Line changes to be made to the file.",
+                                "examples": [
+                                    {
+                                        "line_number": 1,
+                                        "mode": "replace",
+                                        "new_line": "This is a new line"
+                                    }
+                                ],
+                                "items": {
+                                    "$ref": "#/$defs/LineChange"
+                                },
+                                "title": "Changes",
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "changes",
+                            "file_path"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "CheckCurrentDir",
+                    "description": "This tool checks the current directory.",
+                    "parameters": {
+                        "properties": {},
+                        "type": "object",
+                        "required": []
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "DevEnvironmentSetupTool",
+                    "description": "this will be the first tool to run\nInitializes development environments for web development projects.\nSupported stacks include WordPress, JavaScript frameworks, and plain HTML, CSS, and JavaScript.",
+                    "parameters": {
+                        "properties": {
+                            "project_name": {
+                                "description": "Name of the project to set up the environment for.",
+                                "title": "Project Name",
+                                "type": "string"
+                            },
+                            "stack": {
+                                "description": "The technology stack to initialize (WordPress, JavaScript, HTML/CSS/JS).",
+                                "title": "Stack",
+                                "type": "string"
+                            },
+                            "file_name": {
+                                "description": "Name of the file in camel case",
+                                "examples": [
+                                    "index"
+                                ],
+                                "title": "File Name",
+                                "type": "string"
+                            },
+                            "chain_of_thought": {
+                                "description": "Think step by step to determine how to best implement this tool.",
+                                "title": "Chain Of Thought",
+                                "type": "string"
+                            },
+                            "file_code": {
+                                "description": "Correct code for the file. Must include all the import statements, as shown to the client",
+                                "example": "Example HTML/CSS/JavaScript/PHP code",
+                                "title": "File Code",
+                                "type": "string"
+                            },
+                            "file_extension": {
+                                "description": "File extension for the tool code. They are 'html', 'css', 'js', 'php'.",
+                                "title": "File Extension",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "chain_of_thought",
+                            "file_code",
+                            "file_extension",
+                            "file_name",
+                            "project_name",
+                            "stack"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "DirectoryNavigator",
+                    "description": "Allows the WebDeveloper agent to navigate directories.",
+                    "parameters": {
+                        "properties": {
+                            "path": {
+                                "description": "The path of the directory to navigate to.",
+                                "title": "Path",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "path"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "FileReader",
+                    "description": "This tool reads a file and returns the contents along with line numbers on the left.",
+                    "parameters": {
+                        "properties": {
+                            "file_path": {
+                                "description": "Path to the file to read with extension.",
+                                "examples": [
+                                    "./file.txt",
+                                    "./file.json",
+                                    "../../file.py, file.html, file.css"
+                                ],
+                                "title": "File Path",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "file_path"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "FileWriter",
+                    "description": "Allows you to write new files or modify existing files.",
+                    "parameters": {
+                        "properties": {
+                            "chain_of_thought": {
+                                "description": "Please think step-by-step about what needs to be written to the file in order for the program to match the requirements.",
+                                "title": "Chain Of Thought",
+                                "type": "string"
+                            },
+                            "file_path": {
+                                "description": "The path of the file to write or modify. Will create directories if they don't exist.",
+                                "title": "File Path",
+                                "type": "string"
+                            },
+                            "content": {
+                                "description": "The full content of the file to write. Content must not be truncated and must represent a correct functioning program with all the imports defined.",
+                                "title": "Content",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "chain_of_thought",
+                            "content",
+                            "file_path"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "ListDir",
+                    "description": "This tool returns the tree structure of the directory.",
+                    "parameters": {
+                        "properties": {
+                            "dir_path": {
+                                "description": "Path of the directory to read.",
+                                "examples": [
+                                    "./",
+                                    "./test",
+                                    "../../"
+                                ],
+                                "title": "Dir Path",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "dir_path"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "RunCommand",
+                    "description": "Enables you to execute terminal commands related to JavaScript frameworks.",
+                    "parameters": {
+                        "properties": {
+                            "framework": {
+                                "description": "The JavaScript framework to work with.",
+                                "enum": [
+                                    "nextjs",
+                                    "react",
+                                    "angular",
+                                    "vuejs"
+                                ],
+                                "title": "Framework",
+                                "type": "string"
+                            },
+                            "command": {
+                                "description": "The action to perform. Options include `build`, `create` (for file creation), or `install`.",
+                                "enum": [
+                                    "build",
+                                    "create",
+                                    "install"
+                                ],
+                                "title": "Command",
+                                "type": "string"
+                            },
+                            "options": {
+                                "default": "",
+                                "description": "Additional options to pass to the command.",
+                                "title": "Options",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "command",
+                            "framework"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            }
+        ]
+    },
+    {
+        "id": "asst_Adn9hm8tXFJOnFSrwRT8uPNu",
+        "created_at": 1709541271,
+        "description": "This agent focuses on creating appealing layouts and themes, installing WordPress plugins, and ensuring a user-friendly experience.",
+        "file_ids": [],
+        "instructions": "# WebDevAgency Manifesto\nYou are a part of the WebDevCrafters agency. This is an actual real-world development environment.\n\n\n## Mission Statement:\nTo create bespoke, visually compelling, and high-functioning websites using a variety of technologies including WordPress, JavaScript frameworks, and core web technologies (HTML, CSS, and JavaScript), tailored specifically to the client's needs. WebDevAgency offers a comprehensive suite of services from conceptual design to content creation, aiming to deliver exceptional user experiences and functional excellence.To empower businesses and startups by crafting exceptional web experiences that are not only visually appealing but also highly functional and responsive.\n\n## Agency's Initial Structure:\n\n**Roles:**\n\n1. **CEO:** Oversee the agency operations, client liaisons, and coordination among different specialized agents.\n2. **Web Developer Agent:** Handles the implementation of website features and technical specifications. Utilizes technologies such as WordPress, JavaScript frameworks, or plain HTML, CSS, and JavaScript based on project requirements.\n3. **Web Designer Agent:** Focuses on creating appealing layouts and themes, will generate the web design and show the user the design, and ensuring a user-friendly experience.\n4. **Graphic Designer Agent:** Incoporates graphic icons and other visual elements on the website based on the website's preferences improving the website aesthetics.\n5. **Content writer:Agent** Generates written content tailored to the user's requirements creating engaging and imformative text for the website,blog or other content area.\n6. **Coder Agent:** Handles more complex coding tasks optimizing website functionality and address any technical challenges that may arise during the development process.\n7. **Image/Video Creator Agent:** Produces images and videos to compliment the content, using AI-based tools to create visually stunning multimedia elements.\n\n\n### Goals\nTo develop responsive web applications using Next.js and Material-UI (MUI), catering to a diverse clientele with a focus on high-quality design and content.\n\n\n### Communication Flow\nThe communication in this agency is synchronous. Agents will not be performing any actions post response.\n\nThe Web Designer agent for WebDevAgency is responsible for:\n1. Creating visually appealing website layouts and themes that are in line with current web design trends.\n2. Selecting and customizing WordPress themes to meet client specifications.\n3. Installing and configuring WordPress plugins to add functionality as required by the project.\n4. Working closely with the Web Developer agent to ensure that the design is technically feasible and implemented accurately.\n5. Conducting usability testing to ensure that the website offers a user-friendly experience.\n6. Making recommendations for improvements based on user feedback and usability testing results.\n7. Staying updated on the latest web design trends and technologies.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "WebDesignerWebDevAgency",
+        "object": "assistant",
+        "tools": [
+            {
+                "type": "code_interpreter"
+            },
+            {
+                "function": {
+                    "name": "LayoutDesignTool",
+                    "description": "Provides a framework for creating and managing website layouts and themes.\nSupports output in common web design formats such as PSD, SVG, or HTML/CSS templates.",
+                    "parameters": {
+                        "properties": {
+                            "project_name": {
+                                "description": "Name of the project to create the layout for.",
+                                "title": "Project Name",
+                                "type": "string"
+                            },
+                            "design_preferences": {
+                                "description": "A dictionary containing design preferences such as color schemes, typography, and layout structures.",
+                                "title": "Design Preferences",
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "design_preferences",
+                            "project_name"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "ThemePluginRepositoryTool",
+                    "description": "Manages a repository of WordPress themes and plugins.\nFacilitates organizing, updating, and accessing themes and plugins for web development projects.",
+                    "parameters": {
+                        "properties": {
+                            "operation": {
+                                "description": "The operation to perform on the repository (organize, update, access).",
+                                "title": "Operation",
+                                "type": "string"
+                            },
+                            "item_name": {
+                                "description": "The name of the theme or plugin to operate on.",
+                                "title": "Item Name",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "item_name",
+                            "operation"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "UsabilityTestingTool",
+                    "description": "Facilitates usability testing of website designs to ensure a user-friendly experience.\nEvaluates designs against standard usability metrics and collects feedback.",
+                    "parameters": {
+                        "properties": {
+                            "website_url": {
+                                "description": "URL of the website to test.",
+                                "title": "Website Url",
+                                "type": "string"
+                            },
+                            "test_parameters": {
+                                "description": "Parameters for the usability test, including specific aspects to evaluate.",
+                                "title": "Test Parameters",
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "test_parameters",
+                            "website_url"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "SendMessage",
+                    "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient agent and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as the user does not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved.",
+                    "parameters": {
+                        "$defs": {
+                            "recipient": {
+                                "enum": [
+                                    "CEOWebDevAgency",
+                                    "ImageVideoCreatorWebDevAgency",
+                                    "WebDeveloperWebDevAgency",
+                                    "GraphicDesignerWebDevAgency",
+                                    "ContentWriterWebDevAgency"
+                                ],
+                                "title": "recipient",
+                                "type": "string"
+                            }
+                        },
+                        "properties": {
+                            "instructions": {
+                                "description": "Please repeat your instructions step-by-step, including both completed and the following next steps that you need to perfrom. For multi-step, complex tasks, first break them down into smaller steps yourself. Then, issue each step individually to the recipient agent via the message parameter. Each identified step should be sent in separate message. Keep in mind, that the recipient agent does not have access to these instructions. You must include recipient agent-specific instructions in the message parameter.",
+                                "title": "Instructions",
+                                "type": "string"
+                            },
+                            "recipient": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/$defs/recipient"
+                                    }
+                                ],
+                                "description": "CEOWebDevAgency: This agent oversees agency operations, client liaisons, and coordination among different specialized agents within a web development agency.\nImageVideoCreatorWebDevAgency: This agent uses AI tools to produce high-quality images and videos that complement the website's content.\nWebDeveloperWebDevAgency: A versatile agent for WebDevCrafters capable of navigating directories, reading, writing, modifying files, and executing terminal commands.\nGraphicDesignerWebDevAgency: This agent is responsible for enhancing website aesthetics with graphics, icons, and visual elements that align with client preferences.\nContentWriterWebDevAgency: This agent focuses on producing tailored written content for websites, blogs, and other content areas, ensuring engagement and relevance.\n"
+                            },
+                            "message": {
+                                "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
+                                "title": "Message",
+                                "type": "string"
+                            },
+                            "message_files": {
+                                "default": null,
+                                "description": "A list of file ids to be sent as attachments to this message. Only use this if you have the file id that starts with 'file-'.",
+                                "examples": [
+                                    "file-1234",
+                                    "file-5678"
+                                ],
+                                "items": {
+                                    "type": "string"
+                                },
+                                "title": "Message Files",
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "instructions",
+                            "message",
+                            "recipient"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            }
+        ]
+    },
+    {
+        "id": "asst_vw6JBkA2UvoWYsCbSII9fAIC",
+        "created_at": 1709625780,
+        "description": "This agent focuses on producing tailored written content for websites, blogs, and other content areas, ensuring engagement and relevance.",
+        "file_ids": [],
+        "instructions": "# WebDevAgency Manifesto\nYou are a part of the WebDevCrafters agency. This is an actual real-world development environment.\n\n\n## Mission Statement:\nTo create bespoke, visually compelling, and high-functioning websites using a variety of technologies including WordPress, JavaScript frameworks, and core web technologies (HTML, CSS, and JavaScript), tailored specifically to the client's needs. WebDevAgency offers a comprehensive suite of services from conceptual design to content creation, aiming to deliver exceptional user experiences and functional excellence.To empower businesses and startups by crafting exceptional web experiences that are not only visually appealing but also highly functional and responsive.\n\n## Agency's Initial Structure:\n\n**Roles:**\n\n1. **CEO:** Oversee the agency operations, client liaisons, and coordination among different specialized agents.\n2. **Web Developer Agent:** Handles the implementation of website features and technical specifications. Utilizes technologies such as WordPress, JavaScript frameworks, or plain HTML, CSS, and JavaScript based on project requirements.\n3. **Web Designer Agent:** Focuses on creating appealing layouts and themes, will generate the web design and show the user the design, and ensuring a user-friendly experience.\n4. **Graphic Designer Agent:** Incoporates graphic icons and other visual elements on the website based on the website's preferences improving the website aesthetics.\n5. **Content writer:Agent** Generates written content tailored to the user's requirements creating engaging and imformative text for the website,blog or other content area.\n6. **Coder Agent:** Handles more complex coding tasks optimizing website functionality and address any technical challenges that may arise during the development process.\n7. **Image/Video Creator Agent:** Produces images and videos to compliment the content, using AI-based tools to create visually stunning multimedia elements.\n\n\n### Goals\nTo develop responsive web applications using Next.js and Material-UI (MUI), catering to a diverse clientele with a focus on high-quality design and content.\n\n\n### Communication Flow\nThe communication in this agency is synchronous. Agents will not be performing any actions post response.\n\nThe Content Writer agent for WebDevAgency is responsible for:\n1. Creating engaging and relevant written content for websites, blogs, and other content areas such as product descriptions and news articles.\n2. Researching topics to produce accurate and informative content that matches the client's industry and audience interests.\n3. Collaborating with the Web Designer and Graphic Designer agents to ensure that the content matches the visual style of the website.\n4. Ensuring that all content is optimized for search engines to enhance website visibility.\n5. Working with clients to refine content according to feedback and revisions.\n6. Staying updated on the latest trends in content writing and SEO practices.\n7. Managing content schedules and ensuring timely delivery of all written materials.\n8. Will recieve the website design from the web designer and and content into the design.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "ContentWriterWebDevAgency",
+        "object": "assistant",
+        "tools": [
+            {
+                "type": "code_interpreter"
+            },
+            {
+                "function": {
+                    "name": "CollaborationToolContent",
+                    "description": "Facilitates collaboration among content writers, other agents, and clients.\nSupports sharing content drafts, collecting feedback, and tracking revisions tailored to written content.",
+                    "parameters": {
+                        "properties": {
+                            "project_name": {
+                                "description": "Name of the project for collaboration.",
+                                "title": "Project Name",
+                                "type": "string"
+                            },
+                            "action": {
+                                "description": "The action to perform (share, feedback, revision).",
+                                "title": "Action",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "action",
+                            "project_name"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "ContentManagementSystemTool",
+                    "description": "Enables efficient management and publication of written content on websites and blogs.\nOffers features such as drafting, editing, scheduling, and publishing posts, as well as content categorization and revision management.",
+                    "parameters": {
+                        "properties": {
+                            "project_name": {
+                                "description": "Name of the project to manage content for.",
+                                "title": "Project Name",
+                                "type": "string"
+                            },
+                            "content_type": {
+                                "description": "The type of content to manage (article, blog post, etc.).",
+                                "title": "Content Type",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "content_type",
+                            "project_name"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "SEOOptimizationTool",
+                    "description": "Analyzes and optimizes written content for better alignment with search engine algorithms.\nOffers suggestions for improvement based on keywords, meta tags, readability, and other SEO best practices.",
+                    "parameters": {
+                        "properties": {
+                            "content": {
+                                "description": "The written content to optimize.",
+                                "title": "Content",
+                                "type": "string"
+                            },
+                            "keywords": {
+                                "description": "List of keywords to optimize the content for.",
+                                "items": {},
+                                "title": "Keywords",
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "content",
+                            "keywords"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            }
+        ]
+    },
+    {
+        "id": "asst_MUyaQ0ENZusnAVDy70tZYDWF",
+        "created_at": 1709625780,
+        "description": "This agent is responsible for enhancing website aesthetics with graphics, icons, and visual elements that align with client preferences.",
+        "file_ids": [],
+        "instructions": "# WebDevAgency Manifesto\nYou are a part of the WebDevCrafters agency. This is an actual real-world development environment.\n\n\n## Mission Statement:\nTo create bespoke, visually compelling, and high-functioning websites using a variety of technologies including WordPress, JavaScript frameworks, and core web technologies (HTML, CSS, and JavaScript), tailored specifically to the client's needs. WebDevAgency offers a comprehensive suite of services from conceptual design to content creation, aiming to deliver exceptional user experiences and functional excellence.To empower businesses and startups by crafting exceptional web experiences that are not only visually appealing but also highly functional and responsive.\n\n## Agency's Initial Structure:\n\n**Roles:**\n\n1. **CEO:** Oversee the agency operations, client liaisons, and coordination among different specialized agents.\n2. **Web Developer Agent:** Handles the implementation of website features and technical specifications. Utilizes technologies such as WordPress, JavaScript frameworks, or plain HTML, CSS, and JavaScript based on project requirements.\n3. **Web Designer Agent:** Focuses on creating appealing layouts and themes, will generate the web design and show the user the design, and ensuring a user-friendly experience.\n4. **Graphic Designer Agent:** Incoporates graphic icons and other visual elements on the website based on the website's preferences improving the website aesthetics.\n5. **Content writer:Agent** Generates written content tailored to the user's requirements creating engaging and imformative text for the website,blog or other content area.\n6. **Coder Agent:** Handles more complex coding tasks optimizing website functionality and address any technical challenges that may arise during the development process.\n7. **Image/Video Creator Agent:** Produces images and videos to compliment the content, using AI-based tools to create visually stunning multimedia elements.\n\n\n### Goals\nTo develop responsive web applications using Next.js and Material-UI (MUI), catering to a diverse clientele with a focus on high-quality design and content.\n\n\n### Communication Flow\nThe communication in this agency is synchronous. Agents will not be performing any actions post response.\n\n# Designer Agent Instructions\n\nThis agent's role is to analyze the current browser window for WebDevAgency. It should help in understanding the layout, elements, performance, and potential improvements in the context of web development.\n\n### Primary Tasks:\n1. Ask the content writer agent to create copy based on requirements provided by the user before submiting the final draft to the web developer for development.\n2. Describe the layout of each section of the website based on the provided copy. \n3. Confirm with the user if the layout is aligned with their requirements.\n4. Send each section to the Web Developer agent for development. Each section should be sent in a separate message.\n5. Check if the created website aligns with the requirements using the 'AnalyzeContent' tool.\n6. If the website does not align with the requirements, communicate the issues to the Web Developer agent and work together to resolve them.\n\nMake sure not to use any images in the design, use icons instead.\n\n7. Designing custom graphics, icons, and visual elements that complement and enhance the website's aesthetics.\n8. Collaborating with the Web Designer agent to ensure a cohesive visual style across the website.\n9. Working closely with clients to understand their branding and visual preferences.\n10. Applying best practices in graphic design to create engaging and visually appealing website elements.\n11. Keeping up-to-date with the latest trends in graphic design to ensure modern and innovative designs.\n12. Organizing and managing a library of graphic assets for efficient reuse and modification in future projects.\n13. Ask the web developer to build the website after the user has accepted the design.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "GraphicDesignerWebDevAgency",
+        "object": "assistant",
+        "tools": [
+            {
+                "type": "code_interpreter"
+            },
+            {
+                "function": {
+                    "name": "AnalyzeContent",
+                    "description": "This tool analyzes the current website content developed by the Web Developer agent.\nBy asking questions you can ensure that the current website matches your requirements.\nYou can only use this tool after the web developer agent has developed the website.",
+                    "parameters": {
+                        "properties": {
+                            "question": {
+                                "description": "Question to ask about the contents of the current webpage.",
+                                "title": "Question",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "question"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "CollaborationTool",
+                    "description": "Facilitates collaboration among designers, developers, and clients.\nSupports sharing design drafts, collecting feedback, and tracking revisions.",
+                    "parameters": {
+                        "properties": {
+                            "project_name": {
+                                "description": "Name of the project for collaboration.",
+                                "title": "Project Name",
+                                "type": "string"
+                            },
+                            "action": {
+                                "description": "The action to perform (share, feedback, revision).",
+                                "title": "Action",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "action",
+                            "project_name"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "GraphicAssetLibraryTool",
+                    "description": "Manages a library of graphic assets for web design projects.\nEnables organizing, browsing, and retrieving various graphic assets efficiently.",
+                    "parameters": {
+                        "properties": {
+                            "operation": {
+                                "description": "The operation to perform on the library (organize, browse, retrieve).",
+                                "title": "Operation",
+                                "type": "string"
+                            },
+                            "asset_name": {
+                                "description": "The name of the graphic asset to operate on.",
+                                "title": "Asset Name",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "asset_name",
+                            "operation"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "GraphicDesignSoftwareTool",
+                    "description": "Enables the creation and editing of custom graphics, icons, and visual elements for websites.\nOffers functionalities to create new designs, edit existing ones, and export in web-compatible formats.",
+                    "parameters": {
+                        "properties": {
+                            "project_name": {
+                                "description": "Name of the project to create graphics for.",
+                                "title": "Project Name",
+                                "type": "string"
+                            },
+                            "design_requirements": {
+                                "description": "A set of design requirements specifying the types of graphics needed.",
+                                "title": "Design Requirements",
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "design_requirements",
+                            "project_name"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            }
+        ]
+    },
+    {
+        "id": "asst_8Q5Ydb3McOQw8syE15q2vQKt",
+        "created_at": 1709625781,
+        "description": "This agent uses AI tools to produce high-quality images and videos that complement the website's content.",
+        "file_ids": [],
+        "instructions": "# WebDevAgency Manifesto\nYou are a part of the WebDevCrafters agency. This is an actual real-world development environment.\n\n\n## Mission Statement:\nTo create bespoke, visually compelling, and high-functioning websites using a variety of technologies including WordPress, JavaScript frameworks, and core web technologies (HTML, CSS, and JavaScript), tailored specifically to the client's needs. WebDevAgency offers a comprehensive suite of services from conceptual design to content creation, aiming to deliver exceptional user experiences and functional excellence.To empower businesses and startups by crafting exceptional web experiences that are not only visually appealing but also highly functional and responsive.\n\n## Agency's Initial Structure:\n\n**Roles:**\n\n1. **CEO:** Oversee the agency operations, client liaisons, and coordination among different specialized agents.\n2. **Web Developer Agent:** Handles the implementation of website features and technical specifications. Utilizes technologies such as WordPress, JavaScript frameworks, or plain HTML, CSS, and JavaScript based on project requirements.\n3. **Web Designer Agent:** Focuses on creating appealing layouts and themes, will generate the web design and show the user the design, and ensuring a user-friendly experience.\n4. **Graphic Designer Agent:** Incoporates graphic icons and other visual elements on the website based on the website's preferences improving the website aesthetics.\n5. **Content writer:Agent** Generates written content tailored to the user's requirements creating engaging and imformative text for the website,blog or other content area.\n6. **Coder Agent:** Handles more complex coding tasks optimizing website functionality and address any technical challenges that may arise during the development process.\n7. **Image/Video Creator Agent:** Produces images and videos to compliment the content, using AI-based tools to create visually stunning multimedia elements.\n\n\n### Goals\nTo develop responsive web applications using Next.js and Material-UI (MUI), catering to a diverse clientele with a focus on high-quality design and content.\n\n\n### Communication Flow\nThe communication in this agency is synchronous. Agents will not be performing any actions post response.\n\nThe Image/Video Creator agent for WebDevAgency is responsible for:\n1. Producing high-quality images and videos using AI tools to complement the website's content.\n2. Collaborating with the Content Writer and Graphic Designer agents to ensure visual content aligns with written content and overall website aesthetics.\n3. Offering creative solutions for visual storytelling and enhancing user engagement through visual content.\n4. Managing a library of produced images and videos for efficient reuse in future projects.\n5. Staying updated with the latest AI tools and techniques for image and video creation.\n6. Implementing feedback from clients and other agents to refine and improve visual content.\n7. Ensuring that all visual content is optimized for web use, considering factors such as loading times and compatibility across devices.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "ImageVideoCreatorWebDevAgency",
+        "object": "assistant",
+        "tools": [
+            {
+                "type": "code_interpreter"
+            },
+            {
+                "function": {
+                    "name": "AIBasedCreationSoftwareTool",
+                    "description": "Utilizes AI to generate high-quality images and videos for website content.\nSupports a variety of styles, themes, and formats, allowing for creative customization.",
+                    "parameters": {
+                        "properties": {
+                            "project_name": {
+                                "description": "Name of the project to create visual content for.",
+                                "title": "Project Name",
+                                "type": "string"
+                            },
+                            "text": {
+                                "description": "The user specifications for the image",
+                                "title": "Text",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "project_name",
+                            "text"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "CollaborationToolImageVideo",
+                    "description": "Facilitates collaboration among image/video creators, content writers, and graphic designers.\nSupports sharing images and videos, collecting feedback on visual quality and relevance, and tracking revisions.",
+                    "parameters": {
+                        "properties": {
+                            "project_name": {
+                                "description": "Name of the project for collaboration.",
+                                "title": "Project Name",
+                                "type": "string"
+                            },
+                            "action": {
+                                "description": "The action to perform (share, feedback, revision).",
+                                "title": "Action",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "action",
+                            "project_name"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "VisualContentLibraryTool",
+                    "description": "Manages and organizes a library of produced visual content such as images and videos.\nEnables efficient categorization, tagging, and storage with searchable features and version control.",
+                    "parameters": {
+                        "properties": {
+                            "operation": {
+                                "description": "The operation to perform on the library (categorize, tag, store, search).",
+                                "title": "Operation",
+                                "type": "string"
+                            },
+                            "content_name": {
+                                "description": "The name of the visual content to operate on.",
+                                "title": "Content Name",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "content_name",
+                            "operation"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            }
+        ]
+    }
+]
